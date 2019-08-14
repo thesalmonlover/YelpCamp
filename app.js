@@ -20,7 +20,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 app.use(flash());
 app.use(express.static(__dirname +'/public'));
-mongoose.connect('mongodb://localhost:27017/yelp_camp', {useNewUrlParser:true});
+mongoose.connect('mongodb+srv://gsj0919:Rhdqngkwk9(@cluster0-ktkjl.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser:true, useCreateIndex:true}).then(() => {
+	console.log('connected to DB');
+}).catch(err => {
+	console.log('Error:', err.message);
+});
 app.use(require('express-session')({
 	secret: "Once again Rusty wins cutest dog!",
 	resave: false,
