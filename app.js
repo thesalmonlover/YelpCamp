@@ -48,6 +48,8 @@ app.use(function(req, res, next) {
 app.use(indexRoutes);
 app.use("/campgrounds/:id/comments",commentRoutes);
 app.use("/campgrounds/",campgroundRoutes);
-app.listen(3000, function() {
-	console.log("the server is running");
+const port = process.env.PORT || 3000;
+const ip = process.env.IP || "127.0.0.1";
+app.listen(port,function(){
+    console.log("Server has started .... at port "+ port+" ip: "+ip);
 });
